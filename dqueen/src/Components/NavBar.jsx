@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useRef } from "react";
 import {
   Box,
   Flex,
@@ -54,16 +55,22 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 );
 const LoginPopUp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = useRef();
   return (
     <div>
       <Button onClick={onOpen}>Open Modal</Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody></ModalBody>
+          <ModalBody>
+            <FormControl>
+              <FormLabel>Mobile</FormLabel>
+              <input ref={initialRef} placeholder="mobile" name="mobile" />
+            </FormControl>
+          </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
@@ -154,7 +161,7 @@ export const NavBar = () => {
                 variant={"link"}
                 cursor={"pointer"}
                 minW={0}
-                onClick={(e) => console.log(e)}
+                onClick={onOpen}
               >
                 <Avatar
                   size={"sm"}
