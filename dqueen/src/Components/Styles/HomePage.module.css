@@ -1,0 +1,24 @@
+.main {
+  background-color: #f4f4f4;
+  border: 1px solid red;
+  height: 1500px;
+}
+
+.box1 {
+  padding-left: 80px;
+  padding-bottom: 65px;
+}
+.saleProduct {
+  height: 220px;
+  margin-top: 75px;
+}
+
+.off {
+  border: 1px solid #f4f4f4;
+  background-color: #f4f4f4;
+  margin-top: -25px;
+  width: 330px;
+  position: absolute;
+  height: 40px;
+  font-weight: bold;
+}

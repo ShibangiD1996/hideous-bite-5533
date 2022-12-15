@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { useRef } from "react";
 import {
   Box,
   Flex,
@@ -13,7 +12,6 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
   useColorModeValue,
   Stack,
   Image,
@@ -21,16 +19,12 @@ import {
   InputGroup,
   InputLeftElement,
   Input,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
+  useDisclosure,
+  Grid,
 } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { FaCartPlus } from "react-icons/fa";
-import Login from "../Components/Pages/LoginPage";
+import LoginPage from "../Components/Pages/LoginPage";
 import {
   HamburgerIcon,
   CloseIcon,
@@ -38,55 +32,9 @@ import {
   Search2Icon,
 } from "@chakra-ui/icons";
 
-const Links = ["Dashboard", "Projects", "Team"];
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
-const LoginPopUp = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = useRef();
-  return (
-    <div>
-      <Button onClick={onOpen}>Open Modal</Button>
-
-      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <FormControl>
-              <FormLabel>Mobile</FormLabel>
-              <input ref={initialRef} placeholder="mobile" name="mobile" />
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </div>
-  );
-};
 export const NavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
+    <div style={{ position: "fixed", backgroundColor: "white", width: "100%" }}>
       <Box backgroundColor="#fee8e8" height="35px" paddingLeft="130px">
         <Box width="200px" display="flex" gap="10px" paddingTop="5px">
           <Image
@@ -121,10 +69,8 @@ export const NavBar = () => {
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={"Open Menu"}
             display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
           />
           <Box display="flex" paddingLeft="110px">
             <Image height="50px" src="Images/DQ.png" alt="dq" />
@@ -151,46 +97,36 @@ export const NavBar = () => {
               placeholder="Find Lipstick,Eyeliner,Makeup Tutorial,etc"
             />
           </InputGroup>
-          <Flex alignItems={"center"}>
-            <FaCartPlus />
+          <Flex paddingRight="80px" alignItems={"center"} gap="30px">
+            <FaCartPlus size="28px" />
 
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-                onClick={onOpen}
-              >
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
-              </MenuButton>
-            </Menu>
+            <Avatar
+              size={"sm"}
+              src={
+                "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+              }
+            />
+
+            <LoginPage />
           </Flex>
         </Flex>
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
-        <HStack spacing={8} alignItems={"center"}>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
-            ))}
-          </HStack>
-        </HStack>
       </Box>
-      <Box p={4}>Main Content Here</Box>
-    </>
+      <Tabs variant="enclosed" marginLeft="8%">
+        <TabList>
+          <Tab>HOME</Tab>
+          <Tab>MAKE UP</Tab>
+          <Tab>HAIR CARE</Tab>
+          <Tab>SKIN CARE</Tab>
+          <Tab>SANITIZING CARE</Tab>
+          <Tab>COLLECTION</Tab>
+          <Tab>REWARDS</Tab>
+          <Tab>DQUEEN STUDIO</Tab>
+          <Tab>OFFERS</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel />
+        </TabPanels>
+      </Tabs>
+    </div>
   );
 };
