@@ -1,15 +1,14 @@
 import React from "react";
 
 export default function Product(props) {
+  const style1 = { margin: "10px" };
+  const style2 = { boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" };
   return (
-    <div className="card">
-      <img className="product--image" src={props.url} alt="product image" />
+    <div style={{ ...style1, ...style2 }}>
+      <img src={props.url} alt={props.name} />
       <h2>{props.name}</h2>
-      <p className="price">{props.price}</p>
       <p>{props.description}</p>
-      <p>
-        <button>Add to Cart</button>
-      </p>
+      <p style={{ fontWeight: "bold" }}>{props.price}</p>
     </div>
   );
 }

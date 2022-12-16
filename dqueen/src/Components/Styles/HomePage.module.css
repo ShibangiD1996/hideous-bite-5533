@@ -1,7 +1,7 @@
 .main {
   background-color: #f4f4f4;
   border: 1px solid red;
-  height: 1500px;
+  height: 1000%;
 }
 
 .box1 {
@@ -14,11 +14,64 @@
 }
 
 .off {
-  border: 1px solid #f4f4f4;
-  background-color: #f4f4f4;
-  margin-top: -25px;
-  width: 330px;
+  margin-top: 17%;
+  width: 20.8%;
   position: absolute;
   height: 40px;
   font-weight: bold;
+  backdrop-filter: blur(10px);
+  color: black;
 }
+.box2 {
+  margin-top: 6%;
+  padding-left: 15%;
+}
+.prod {
+  height: 64%;
+}
+.text2 {
+  margin-right: 30%;
+  position: absolute;
+  margin-top: 15%;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 10px;
+  color: black;
+  backdrop-filter: blur(10px);
+}
+
+.text3 {
+  text-align: center;
+  position: absolute;
+  margin-top: 17.4%;
+  margin-left: 10%;
+  color: black;
+  backdrop-filter: blur(30px);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.videoBox {
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 25%;
+  margin-top: 5%;
+}
+
+.vdo {
+  height: 230px;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 50px;
+}
+.vdoplay {
+  height: 200px;
+  width: 200px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.vdoplay:hover {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+

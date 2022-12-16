@@ -4,7 +4,7 @@ import Product from "./products";
 import { productData, responsive } from "./data";
 export default function Final() {
   const product = productData.map((item) => (
-    <Product
+    <Product 
       name={item.name}
       url={item.imageurl}
       price={item.price}
@@ -12,8 +12,7 @@ export default function Final() {
     />
   ));
   return (
-    <div className="App">
-      <h1>React multi carousel</h1>
+    <div>
       <Carousel showDots={true} responsive={responsive}>
         {product}
       </Carousel>
