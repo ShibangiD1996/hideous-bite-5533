@@ -1,38 +1,30 @@
-import { ReactNode } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
   Avatar,
-  HStack,
-  Link,
   IconButton,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useColorModeValue,
-  Stack,
   Image,
   Text,
   InputGroup,
   InputLeftElement,
   Input,
-  useDisclosure,
-  Grid,
+  Button,
 } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { FaCartPlus } from "react-icons/fa";
+import { Search2Icon } from "@chakra-ui/icons";
 import LoginPage from "../Components/Pages/LoginPage";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  AddIcon,
-  Search2Icon,
-} from "@chakra-ui/icons";
+import { useState } from "react";
+import NavbarDropDown from "./NavBarDropDown";
 
 export const NavBar = () => {
+  const [searchField, setSearchField] = useState("");
+  const handleChange = (e) => {
+    setSearchField(e.target.value);
+  };
+
   return (
     <div style={{ position: "fixed", backgroundColor: "white", width: "100%" }}>
       <Box backgroundColor="#fee8e8" height="35px" paddingLeft="130px">
@@ -91,10 +83,12 @@ export const NavBar = () => {
             />
             <Input
               height="40px"
+              type="search"
               width="600px"
               backgroundColor="#fafafa"
               size="md"
               placeholder="Find Lipstick,Eyeliner,Makeup Tutorial,etc"
+              onChange={handleChange}
             />
           </InputGroup>
           <Flex paddingRight="80px" alignItems={"center"} gap="30px">
@@ -106,27 +100,11 @@ export const NavBar = () => {
                 "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
               }
             />
-
             <LoginPage />
           </Flex>
         </Flex>
       </Box>
-      <Tabs variant="enclosed" marginLeft="8%">
-        <TabList>
-          <Tab>HOME</Tab>
-          <Tab>MAKE UP</Tab>
-          <Tab>HAIR CARE</Tab>
-          <Tab>SKIN CARE</Tab>
-          <Tab>SANITIZING CARE</Tab>
-          <Tab>COLLECTION</Tab>
-          <Tab>REWARDS</Tab>
-          <Tab>DQUEEN STUDIO</Tab>
-          <Tab>OFFERS</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel />
-        </TabPanels>
-      </Tabs>
+      <NavbarDropDown />
     </div>
   );
 };
