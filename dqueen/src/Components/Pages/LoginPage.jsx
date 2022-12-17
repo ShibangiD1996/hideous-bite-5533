@@ -1,4 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 import {
   Modal,
   ModalOverlay,
@@ -16,17 +18,49 @@ import {
   Flex,
   Box,
   Divider,
+  Avatar,
 } from "@chakra-ui/react";
 export default function LoginPage() {
   const [mobile, setMobile] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { authState, loginUser } = useContext(AuthContext);
 
-  const handleChange = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch(`https://reqres.in/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      res = await res.json();
+      loginUser(res.token);
+    } catch (err) {
+      console.log(`Error Found:`, err);
+    }
+  };
+  if (authState.isAuth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div>
-      <Button onClick={onOpen}>Signin</Button>
+      <Avatar
+        size={"sm"}
+        src={
+          "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+        }
+        onClick={onOpen}
+      />
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent height="580px" width="100%">
@@ -95,14 +129,23 @@ export default function LoginPage() {
                   <input
                     ref={initialRef}
                     textAlign="center"
-                    placeholder="*mobile"
-                    name="mobile"
-                    type="number"
-                    onChange={handleChange}
+                    placeholder="email"
+                    name="email"
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    ref={initialRef}
+                    textAlign="center"
+                    placeholder="password"
+                    name="password"
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </Box>
               </Flex>
             </FormControl>
+
             <Button
               marginTop="45px"
               marginLeft="3.5%"
@@ -111,6 +154,7 @@ export default function LoginPage() {
               fontWeight="bold"
               color="white"
               backgroundColor="grey"
+              onSubmit={handleSubmit}
             >
               SIGN IN
             </Button>

@@ -16,8 +16,6 @@ export default function SingleProductPage({
   description,
   price,
 }) {
-
- 
   return (
     <Center py={12}>
       <RouterLink to={`/products/${id}`}>
@@ -35,16 +33,7 @@ export default function SingleProductPage({
             rounded={"lg"}
             mt={-12}
             height={"230px"}
-            //   _after={{
-            //     transition: "all .3s ease",
-            //     content: '""',
-            //     w: "full",
-            //     h: "full",
-            //     top:5,
-            //     left: 0,
-            //     backgroundImage: `url(${image})`,
-            //     filter: "blur(15px)",
-            //   }}
+           
             _groupHover={{
               _after: {
                 filter: "blur(20px)",

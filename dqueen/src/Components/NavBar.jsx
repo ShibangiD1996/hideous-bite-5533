@@ -1,4 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
+import { AuthContext } from "./Context/AuthContext";
 import {
   Box,
   Flex,
@@ -16,11 +17,12 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { FaCartPlus } from "react-icons/fa";
 import { Search2Icon } from "@chakra-ui/icons";
 import LoginPage from "../Components/Pages/LoginPage";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NavbarDropDown from "./NavBarDropDown";
 
 export const NavBar = () => {
   const [searchField, setSearchField] = useState("");
+  const { authState, logoutUser } = useContext(AuthContext);
   const handleChange = (e) => {
     setSearchField(e.target.value);
   };
@@ -93,14 +95,9 @@ export const NavBar = () => {
           </InputGroup>
           <Flex paddingRight="80px" alignItems={"center"} gap="30px">
             <FaCartPlus size="28px" />
-
-            <Avatar
-              size={"sm"}
-              src={
-                "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-              }
-            />
             <LoginPage />
+            <Button onClick={logoutUser}>Signout</Button>
+            <p>{authState.token}</p>
           </Flex>
         </Flex>
       </Box>

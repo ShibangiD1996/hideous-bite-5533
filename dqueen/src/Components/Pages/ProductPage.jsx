@@ -40,6 +40,7 @@ export default function ProductPage() {
                     description={item.description}
                     price={item.price}
                     rating={item.rating}
+                    rating_no={item.rating_no}
                     offerPrice={item.offerPrice}
                   />
                 </GridItem>
