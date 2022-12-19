@@ -4,11 +4,11 @@ import { CartContext } from "../Context/CartContext";
 
 export default function Cart() {
   const [state, dispatch] = useContext(CartContext);
-
+  console.log(state.cartItem);
   return (
     <div className="addedItem">
       <ListGroup>
-        {state.cartItem.map((prod) => (
+        {state.cartItem.map((prod) => {
           <ListGroup.Item key={prod.id}>
             <Row>
               <Col md={2}>
@@ -39,7 +39,7 @@ export default function Cart() {
               </Col>
             </Row>
           </ListGroup.Item>
-        ))}
+        })}
       </ListGroup>
     </div>
   );

@@ -1,6 +1,5 @@
 
 import React, { useState, useReducer } from "react";
-import { Toast, useToast } from "@chakra-ui/react";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,6 +29,5 @@ const reducer = (state, action) => {
     }
   }
 
-  //   return <div>reducer</div>;
 };
 export default reducer;
