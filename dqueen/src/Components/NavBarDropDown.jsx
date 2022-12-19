@@ -226,16 +226,13 @@ const MobileNavItem = ({ label, children, href }) => {
   );
 };
 
-//   interface NavItem {
-//     label: string;
-//     subLabel?: string;
-//     children?: Array<NavItem>;
-//     href?: string;
-//   }
-
 const NAV_ITEMS = [
   {
     label: "HOME",
+    href: "/",
+  },
+  {
+    label: "MAKEUP",
     children: [
       {
         label: "LIPS",
@@ -246,7 +243,7 @@ const NAV_ITEMS = [
           "HighShine Lipstick",
           "Mate Lipstick",
         ],
-        href: "#",
+        href: "/products",
       },
       {
         label: "FACE",
@@ -262,59 +259,17 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "MAKEUP",
-    children: [
-      {
-        label: "Shop by Category",
-        subLabel: [
-          "Accessories",
-          "Beauty & Wellness",
-          "Clothng",
-          "Dresses",
-          "Home & Furniture",
-          "Jewelry",
-          "Petites",
-          "Plus",
-          "Shoe",
-          "BHLDN Weddings",
-        ],
-        href: "#",
-      },
-      {
-        label: "MAKEUP",
-        subLabel: [
-          "New Today:Clothing & Accessories",
-          " Trending:Metallic & Shine",
-          "The Velvet Shop",
-          "House of Hackney",
-        ],
-        href: "#",
-      },
-    ],
-  },
-  {
     label: "HAIRCARE",
     children: [
       {
-        label: "Shop bu Cateory",
+        label: "HAIRCARE",
         subLabel: [
-          "Shop All Dresses",
-          "New!",
-          "Top Rated Dresses",
-          "Ocassionns & Party Dresses",
-          "Lounge & Casual Dresses",
-          "Formal Dresses",
-          "Maxi Dresses",
-        ],
-        href: "#",
-      },
-      {
-        label: "Features Shops",
-        subLabel: [
-          "Velvet Dresses",
-          "Trending:Tulle",
-          "Little Black Dresses",
-          "Little White Dresses",
+          "Shampoo",
+          "Conditioner",
+          "Hair Oil",
+          "Serum",
+          "Hair Mask",
+          "Combos",
         ],
         href: "#",
       },
@@ -324,30 +279,21 @@ const NAV_ITEMS = [
     label: "SKINCARE",
     children: [
       {
-        label: "Shop Category",
+        label: "SKIN CARE",
         subLabel: [
-          "Shop All Clothing",
-          "New!",
-          "Top-Rated",
-          "Activewear",
-          "Blazers",
-          "Dresses",
-          "Getaway& Resort Wear",
-          "Intimates & Lingerie",
-          "Jackets & Coats",
-          "Jeans",
-          "Jumpsuits",
+          "Mosturizer",
+          "Night Cream",
+          "Eye Cream",
+          "Body Lotion",
+          "Serum",
+          "Sunscreen",
+          "Skincare Kits",
         ],
         href: "#",
       },
       {
         label: "Featured",
-        subLabel: [
-          "The Holiday Party Shop",
-          " Trending:Metallic & Shine",
-          "The Velvet Shop",
-          "The Cozy Adventure Shop",
-        ],
+        subLabel: ["Cleanser", "Facewash", "Exfoliator & Scrub"],
         href: "#",
       },
     ],
@@ -356,20 +302,13 @@ const NAV_ITEMS = [
     label: "SANITISING CARE",
     children: [
       {
-        label: "Shop by Category",
+        label: "Sanitizing Care",
         subLabel: [
-          "Shop All Shoes",
-          "New!",
-          "Top-Rated",
-          "Boot & Booties",
-          "Cold Weather Boots",
-          "Flats",
+          "Sanitizing Wipes",
+          "Hand Sanitizer",
+          "Sanitising Kits",
+          "Sanitizing Spray",
         ],
-        href: "#",
-      },
-      {
-        label: "Brand We Love",
-        subLabel: ["ON", "Bibi Lou", "Silent D", "Sore!", "UGG"],
         href: "#",
       },
     ],
@@ -378,26 +317,14 @@ const NAV_ITEMS = [
     label: "COLLECTION",
     children: [
       {
-        label: "Shop by Category",
+        label: "Shop by Collection",
         subLabel: [
-          "Shop All Accessories",
-          "Top-Rated",
-          "Bag & Small Accessories",
-          "Belts",
-          "Gloves",
-          "Hair Accessories",
-        ],
-        href: "#",
-      },
-      {
-        label: "Explore Jewelry",
-        subLabel: [
-          "Necklaces",
-          "Earrings",
-          "Bracelets",
-          "Rings",
-          "Hoop Shop",
-          "Shop All Jewelry",
+          "DQUEEN",
+          "Superfoods",
+          "Treat Love Care",
+          "Clean Beauty",
+          "Popxo",
+          "Wipeout",
         ],
         href: "#",
       },
@@ -407,28 +334,8 @@ const NAV_ITEMS = [
     label: "REWARDS",
     children: [
       {
-        label: "Shop by Category",
-        subLabel: [
-          "Explore All BHLDN Weddings",
-          " Book An Appointment",
-          "Shop All Weddings",
-          "New!",
-          "Top Rated Styles",
-          "Bride",
-          "Wedding Dresses",
-        ],
-        href: "#",
-      },
-      {
-        label: "Bridal by Styles",
-        subLabel: [
-          "Morden Bride",
-          " Bohemain Bride",
-          "Beach & Destination Bride",
-          "City Hall Bride",
-          "Romantic Bride",
-          "Classic Bride",
-        ],
+        label: "Rewards",
+        subLabel: ["Studio", "Blog"],
         href: "#",
       },
     ],
@@ -437,59 +344,13 @@ const NAV_ITEMS = [
     label: "DQUEEN STUDIO",
     children: [
       {
-        label: "Shop by Category",
-        subLabel: [
-          "Explore All Home & Furniture",
-          " New!",
-          "Bath",
-          "Beeding",
-          "Candle & Home Fragrance",
-          "Decor",
-          "Furniture",
-        ],
-        href: "#",
-      },
-      {
-        label: "AnthroLiving House Tours",
-        subLabel: [
-          "Less Is More",
-          "House of Hackney",
-          "A Sense of Place",
-          "*Sol*ful Spaces",
-          "The Story Of Home",
-          "Be Our Guest",
-          "True Nature",
-          "Lit From Within",
-        ],
+        label: "",
+        subLabel: ["Studio", "Blog"],
         href: "#",
       },
     ],
   },
   {
     label: "OFFERS",
-    children: [
-      {
-        label: "Shop by Category",
-        subLabel: [
-          "Shop All Beauty & Wellness",
-          "New!",
-          "Top-Rated",
-          "Beauty Gifts & Sets",
-          "Bath & Body",
-          "Candles & Home Fragrance",
-        ],
-        href: "#",
-      },
-      {
-        label: "Featured",
-        subLabel: [
-          "The George & Viv Holiday Shop",
-          " Anthropologie Exclusives",
-          "Beauty Gifts Under $25",
-          "Travel Size",
-        ],
-        href: "#",
-      },
-    ],
   },
 ];

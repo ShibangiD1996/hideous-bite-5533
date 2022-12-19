@@ -11,17 +11,20 @@ import {
   useColorModeValue,
   Select,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import Slider from "./Slider/Slider";
+import { useEffect, useState,useContext } from "react";
+// import Slider from "./Slider/Slider";
 import { MdLocalShipping } from "react-icons/md";
+import { Link as RouterLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { CartContext } from "../Context/CartContext";
 
-import { json, useParams } from "react-router-dom";
 
 export default function ProductDetails() {
+  
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const [cartItem, setCartItem] = useState([]);
-
+  const { state, dispatch } = useContext(CartContext);
+  
   useEffect(() => {
     axios
       .get(`https://smiling-lime-chicken.cyclic.app/cosmetics/${id}`)
@@ -31,10 +34,14 @@ export default function ProductDetails() {
       .catch((err) => console.log(err));
   }, [id]);
 
-  const AddProdcut = () => {
-    setCartItem(...cartItem);
-    console.log("ok")
+  const ItemADDED = (pitem) => {
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: pitem,
+    });
+   
   };
+
 
   const { image, brand, description, price, rating, rating_no, offerPrice } =
     product;
@@ -58,7 +65,7 @@ export default function ProductDetails() {
             fontSize={{ base: "2xl", sm: "4xl", lg: "2xl" }}
             marginTop="8%"
             marginLeft="1%"
-            onClick={AddProdcut}
+            // onClick={AddProdcut}
           >
             {brand}
           </Heading>
@@ -144,7 +151,10 @@ export default function ProductDetails() {
         </Box>
       </Flex>
       <Flex marginLeft="38%" gap={"2%"}>
-        <Slider />
+        <RouterLink to="/cartitems">
+          <Button onClick={()=>ItemADDED(product)}>Add to cart</Button>
+        </RouterLink>
+
         <Text marginTop={"-8%"}>FREE GIFT ON PURCHASE</Text>
       </Flex>
       <Box
