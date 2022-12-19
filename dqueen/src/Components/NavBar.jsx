@@ -28,7 +28,7 @@ export const NavBar = () => {
   };
 
   return (
-    <div style={{ position: "fixed", backgroundColor: "white", width: "100%" }}>
+    <div style={{ position: "fixed", backgroundColor: "white", width: "100%"}}>
       <Box backgroundColor="#fee8e8" height="35px" paddingLeft="130px">
         <Box width="200px" display="flex" gap="10px" paddingTop="5px">
           <Image

@@ -9,7 +9,7 @@ import Home from "../HomePage1";
 export default function HomePage() {
   return (
     <div className={style.main}>
-      <Image marginTop="10%" src="Images/MakeupBrand.gif" />
+      <Image paddingTop={"10%"} src="Images/MakeupBrand.gif" />
       <Image
         marginTop="25px"
         width="100%"

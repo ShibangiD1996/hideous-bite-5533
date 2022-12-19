@@ -10,7 +10,6 @@ export default function ProductPage() {
     axios
       .get("https://smiling-lime-chicken.cyclic.app/cosmetics")
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       });
   }, []);
