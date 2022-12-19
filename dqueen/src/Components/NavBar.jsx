@@ -17,15 +17,11 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { FaCartPlus } from "react-icons/fa";
 import { Search2Icon } from "@chakra-ui/icons";
 import LoginPage from "../Components/Pages/LoginPage";
-import { useContext, useState } from "react";
+// import { useState,useContext } from "react";
 import NavbarDropDown from "./NavBarDropDown";
 
 export const NavBar = () => {
-  const [searchField, setSearchField] = useState("");
-  const { authState, logoutUser } = useContext(AuthContext);
-  const handleChange = (e) => {
-    setSearchField(e.target.value);
-  };
+
 
   return (
     <div style={{ position: "fixed", backgroundColor: "white", width: "100%"}}>
@@ -90,14 +86,14 @@ export const NavBar = () => {
               backgroundColor="#fafafa"
               size="md"
               placeholder="Find Lipstick,Eyeliner,Makeup Tutorial,etc"
-              onChange={handleChange}
+              
             />
           </InputGroup>
           <Flex paddingRight="80px" alignItems={"center"} gap="30px">
             <FaCartPlus size="28px" />
             <LoginPage />
-            <Button onClick={logoutUser}>Signout</Button>
-            <p>{authState.token}</p>
+            <Button >Signout</Button>
+            <p></p>
           </Flex>
         </Flex>
       </Box>

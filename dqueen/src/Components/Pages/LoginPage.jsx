@@ -27,30 +27,30 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { authState, loginUser } = useContext(AuthContext);
+  // const { authState, loginUser } = useContext(AuthContext);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let res = await fetch(`https://reqres.in/api/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-      res = await res.json();
-      loginUser(res.token);
-    } catch (err) {
-      console.log(`Error Found:`, err);
-    }
-  };
-  if (authState.isAuth) {
-    return <Navigate to="/" />;
-  }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     let res = await fetch(`https://reqres.in/api/login`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         email,
+  //         password,
+  //       }),
+  //     });
+  //     res = await res.json();
+  //     loginUser(res.token);
+  //   } catch (err) {
+  //     console.log(`Error Found:`, err);
+  //   }
+  // };
+  // if (authState.isAuth) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <div>
@@ -132,7 +132,7 @@ export default function LoginPage() {
                     placeholder="email"
                     name="email"
                     type="email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    // onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
                     ref={initialRef}
@@ -140,7 +140,7 @@ export default function LoginPage() {
                     placeholder="password"
                     name="password"
                     type="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    // onChange={(e) => setPassword(e.target.value)}
                   />
                 </Box>
               </Flex>
@@ -154,7 +154,7 @@ export default function LoginPage() {
               fontWeight="bold"
               color="white"
               backgroundColor="grey"
-              onSubmit={handleSubmit}
+              // onSubmit={handleSubmit}
             >
               SIGN IN
             </Button>

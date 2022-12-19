@@ -14,7 +14,7 @@ const inisitalState = {
 function CartContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, inisitalState);
 
-  const value = { state, dispatch };
+  let value = { state, dispatch };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 export default CartContextProvider;
